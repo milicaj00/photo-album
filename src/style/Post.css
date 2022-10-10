@@ -1,0 +1,12 @@
+.postBody{
+    line-height: 1.5em;
+    height: 3em;       
+    overflow: hidden;
+}
+.Post{
+    width: 70%
+}
+.SinglePost{
+    display: flex;
+    justify-content: center;
+}
