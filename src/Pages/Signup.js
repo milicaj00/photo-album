@@ -12,9 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "@mui/material/Alert";
 import { useState } from "react";
 
-
 const Signup = () => {
-
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -23,42 +21,43 @@ const Signup = () => {
 
         const data = new FormData(event.currentTarget);
 
-        if(data.get('name').length < 2 || data.get('email').length < 2 || data.get('password').length < 2)
-        {
-           setError('Input not valid')
-            return
+        if (
+            data.get("name").length < 2 ||
+            data.get("email").length < 2 ||
+            data.get("password").length < 2
+        ) {
+            setError("Input not valid");
+            return;
         }
 
-        const emailRegex = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"
+        const emailRegex = "/^w+([.-]?w+)*@w+([.-]?w+)*(.w{2,3})+$/";
 
-        if(data.get('email').match(emailRegex)){
+        if (!data.get("email").match(emailRegex)) {
             setError("Email not valid");
             return;
         }
 
-        let users = JSON.parse(localStorage.getItem('users'))
-        
-        if(users === null)
-        {
-            users = []
+        let users = JSON.parse(localStorage.getItem("users"));
+
+        if (users === null) {
+            users = [];
         }
 
         const newUser = {
-            name: data.get('name'),
-            email: data.get('email'),
-            password: data.get('password')
-        }
+            name: data.get("name"),
+            email: data.get("email"),
+            password: data.get("password")
+        };
 
-        if(!users.includes(newUser))
-            users.push(newUser)
+        if (!users.includes(newUser)) users.push(newUser);
 
-        localStorage.setItem('users', JSON.stringify(users))
+        localStorage.setItem("users", JSON.stringify(users));
 
-        localStorage.setItem('currentUser', JSON.stringify(newUser))
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
 
         navigate("/posts");
 
-        window.location.reload()
+        window.location.reload();
     };
 
     return (
@@ -117,13 +116,12 @@ const Signup = () => {
                         id="password"
                         autoComplete="current-password"
                     />
-                   
+
                     <Button
                         type="submit"
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
-                        
                     >
                         Sign Up
                     </Button>
@@ -140,4 +138,4 @@ const Signup = () => {
     );
 };
 
-export default Signup
+export default Signup;
