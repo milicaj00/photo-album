@@ -14,8 +14,6 @@ import { useState } from "react";
 import Alert from "@mui/material/Alert";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = "https://jsonplaceholder.typicode.com";
-
 const Login = () => {
     const [error, setError] = useState("");
 

@@ -2,3 +2,9 @@
     display: flex;
     /* flex-wrap: wrap; */
 }
+.formInput{
+    margin: 12px;
+}
+.AddForm{
+    gap: 30px;
+}

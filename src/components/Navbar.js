@@ -37,7 +37,7 @@ const Navbar = () => {
                     >
                         <Tab label="Posts" onClick={() => navigate('/posts')}/>
                         <Tab label="Albums" onClick={() => navigate('/albums')}/>
-                        <Tab label="Users" />
+                        <Tab label="Users" onClick={() => navigate('/users')}/>
                     </Tabs>
                 </Grid>
             </Grid>

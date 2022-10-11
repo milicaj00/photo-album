@@ -8,6 +8,7 @@ import Photos from "./Pages/Photos";
 import SinglePost from "./Pages/SinglePost";
 import Navbar from "./components/Navbar";
 import './style/Home.css'
+import Users from "./Pages/Users";
 
 const Layout = () => {
 
@@ -28,6 +29,8 @@ const Layout = () => {
                         <Route path="/albums" element={user ? <Albums /> : <Navigate replace to = '/'/>} />
                         <Route path="/post/:id" element={user ? <SinglePost /> : <Navigate replace to = '/'/>} />
                         <Route path="/photos/:id" element={user ? <Photos /> : <Navigate replace to = '/'/>} />
+
+                        <Route path="/users" element={user ? <Users /> : <Navigate replace to = '/'/>} />
                     </Routes>
                 </div>
             </Router>
