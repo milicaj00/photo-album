@@ -20,7 +20,7 @@ function FeaturedPost(props) {
                         <Typography variant="h6">{post.title}</Typography>
                         <Typography variant="subtitle2">
                             {post.body.length > 115
-                                ? post.body.substring(0, 115) + " ..."
+                                ? post.body.substring(0, 80) + " ..."
                                 : post.body}
                         </Typography>
 
