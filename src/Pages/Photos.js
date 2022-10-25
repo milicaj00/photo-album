@@ -3,7 +3,7 @@ import axios from "axios";
 import { observe } from "mobx";
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 import CardPhoto from "../components/Card";
 import { PhotoDataStore } from "../store/photo store/PhotoDataStore";
 import { provider, useInstance } from "react-ioc";
@@ -14,9 +14,11 @@ const Photos = provider(PhotoDataStore)(
     observer(() => {
 
         const store = useInstance(PhotoDataStore);
+
+        const { id } = useParams()
         
         useEffect(() => {
-            const id = window.location.href[window.location.href.length - 1];
+          //  const id = window.location.href[window.location.href.length - 1];
             store.readPhotos(id);
         }, [store]);
 

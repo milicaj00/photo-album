@@ -7,8 +7,10 @@ export class PostDataStore {
     state = {
         data: [],
         error: null,
-        loading: false
+        loading: false,
+        singlePost : null
     };
+
 
     constructor() {
         makeAutoObservable(this);
@@ -19,12 +21,31 @@ export class PostDataStore {
         return this.state.data;
     }
 
-    get loading(){
-        return this.state.loading
+    get loading() {
+        return this.state.loading;
     }
 
-    findById(id) {
-        return this.posts?.find(post => post.id === id) || null;
+    get post() {
+        return this.state.singlePost;
+    }
+
+    async findById(id) {
+        this.state.loading = true;
+
+        try {
+            const data = await this.httpClient.get("/posts/" + id);
+            runInAction(() => {
+                console.log(data);
+                this.state.singlePost = data;
+                this.state.error = null;
+                this.state.loading = false;
+            });
+        } catch (ex) {
+            runInAction(() => {
+                this.state.error = null;
+                this.state.loading = false;
+            });
+        }
     }
 
     async readAll() {
